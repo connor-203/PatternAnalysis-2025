@@ -4,10 +4,8 @@ import json
 import torch
 from torch.nn.utils.rnn import pad_sequence
 from torch_geometric.data import Data
-
-
+from sklearn.model_selection import train_test_split
 data_dir = "facebook_large"
-
 
 def load_node_csv(path, index_col, **kwargs):
     df = pd.read_csv(path, **kwargs)
@@ -77,6 +75,23 @@ edge_index = load_edge_csv(path=os.path.join(data_dir, "musae_facebook_edges.csv
 # edge_index is a tensor of length two, one for the source node and the other for the target node
 print(edge_index.shape)
 
-data=Data(x=x, edge_index=edge_index, y=y)
-print(data)
 
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+
+# Might actually split the data before putting it into "Data".
+abacada = (0, 1)
+
+
+data_train=Data(x=X_train, edge_index=edge_index, y=y_train)
+data_test=Data(x=X_test, edge_index=edge_index, y=y_test)
+
+data = Data(x=x, edge_index=edge_index, y=y)
+
+
+train_empty=torch.zeros(data.num_nodes, dtype=torch.bool)
+train_empty[: data_train.num_nodes]=True
+
+# data_train, data_test = train_test_split(data, test_size = 0.2)
+
+
+print(data_train)
