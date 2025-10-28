@@ -5,6 +5,7 @@ import torch
 from torch.nn.utils.rnn import pad_sequence
 from torch_geometric.data import Data
 from sklearn.model_selection import train_test_split
+import numpy as np
 data_dir = "facebook_large"
 
 def load_node_csv(path, index_col, **kwargs):
@@ -26,7 +27,7 @@ def load_node_csv(path, index_col, **kwargs):
             xs.append(torch.zeros(1, dtype=torch.float))
     
     # Pad features to have vectors of the same size
-    padded_features = pad_sequence([torch.tensor(seq) for seq in xs], batch_first=True, padding_value=0)
+    padded_features = pad_sequence([seq.detach().clone() for seq in xs], batch_first=True, padding_value=0)
     mask = padded_features != 0 # mask to indicate which features were padded
   
     # Create tensor of normaized features for nodes
@@ -39,7 +40,7 @@ def load_node_csv(path, index_col, **kwargs):
 
 x = load_node_csv(path=os.path.join(data_dir, "musae_facebook_target.csv"), index_col="facebook_id")
 # x containing the PyTorch tensors containing feature vectors of the 22,470 Facebook pages.
-print(x.shape)
+# print(x.shape)
 
 def load_labels_csv(path, label_col, **kwargs):
     df = pd.read_csv(path, **kwargs)
@@ -60,22 +61,23 @@ def load_labels_csv(path, label_col, **kwargs):
 
 y = load_labels_csv(path=os.path.join(data_dir, "musae_facebook_target.csv"), label_col="page_type")
 # a PyTorch tensor for the 22,470 Facebook pages containing the page_type label in the dataset.
-print(y.shape)
+# print(y.shape)
 
 def load_edge_csv(path, src_index_col, dst_index_col, **kwargs):
     df = pd.read_csv(path, **kwargs)
 
     src = df[src_index_col].values
     dst = df[dst_index_col].values
-    edge_index = torch.tensor([src, dst])
+    
+    srcdist = np.array([src, dst])
+    
+    edge_index = torch.tensor(srcdist)
 
     return edge_index
 
 edge_index = load_edge_csv(path=os.path.join(data_dir, "musae_facebook_edges.csv"), src_index_col="id_1", dst_index_col="id_2")
 # edge_index is a tensor of length two, one for the source node and the other for the target node
-print(edge_index.shape)
-
-
+# print(edge_index.shape)
 
 # This whole block (of 3) is obsolete.
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
@@ -96,4 +98,4 @@ test_empty[: data_train.num_nodes]=False
 # data_train, data_test = train_test_split(data, test_size = 0.2)
 
 
-print(data_train)
+# print(data_train)
