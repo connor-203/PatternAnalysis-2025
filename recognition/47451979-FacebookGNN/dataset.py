@@ -76,12 +76,9 @@ edge_index = load_edge_csv(path=os.path.join(data_dir, "musae_facebook_edges.csv
 print(edge_index.shape)
 
 
+
+# This whole block (of 3) is obsolete.
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
-
-# Might actually split the data before putting it into "Data".
-abacada = (0, 1)
-
-
 data_train=Data(x=X_train, edge_index=edge_index, y=y_train)
 data_test=Data(x=X_test, edge_index=edge_index, y=y_test)
 
@@ -90,6 +87,11 @@ data = Data(x=x, edge_index=edge_index, y=y)
 
 train_empty=torch.zeros(data.num_nodes, dtype=torch.bool)
 train_empty[: data_train.num_nodes]=True
+
+test_empty=torch.ones(data.num_nodes, dtype=torch.bool)
+test_empty[: data_train.num_nodes]=False
+
+# test_empty=~train_empty
 
 # data_train, data_test = train_test_split(data, test_size = 0.2)
 
