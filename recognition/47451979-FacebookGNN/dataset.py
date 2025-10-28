@@ -4,9 +4,19 @@ import json
 import torch
 from torch.nn.utils.rnn import pad_sequence
 from torch_geometric.data import Data
-from sklearn.model_selection import train_test_split
 import numpy as np
+import warnings
+
+# This line serves one purpose, to omit the warnings
+# from the import statement from umap.plot. It's a
+# little heavy-handed of a fix, so it does also
+# suppress all other warnings.
+warnings.filterwarnings("ignore")
+
+
 data_dir = "facebook_large"
+
+trainPercent = 0.8
 
 def load_node_csv(path, index_col, **kwargs):
     df = pd.read_csv(path, **kwargs)
@@ -40,7 +50,6 @@ def load_node_csv(path, index_col, **kwargs):
 
 x = load_node_csv(path=os.path.join(data_dir, "musae_facebook_target.csv"), index_col="facebook_id")
 # x containing the PyTorch tensors containing feature vectors of the 22,470 Facebook pages.
-# print(x.shape)
 
 def load_labels_csv(path, label_col, **kwargs):
     df = pd.read_csv(path, **kwargs)
@@ -48,10 +57,10 @@ def load_labels_csv(path, label_col, **kwargs):
     # Convert class_labels to numeric data types in order to create tensors
     label_categories = df[label_col].astype("category").cat.categories
 
-    class_label_to_code = pd.DataFrame({
-        "class_label": label_categories,
-        "class_label_code": pd.Categorical(label_categories, categories=label_categories).codes
-    })
+    # class_label_to_code = pd.DataFrame({
+    #     "class_label": label_categories,
+    #     "class_label_code": pd.Categorical(label_categories, categories=label_categories).codes
+    # })
 
     df["class_label_code"] = pd.Categorical(df[label_col], categories=label_categories).codes
 
@@ -61,7 +70,6 @@ def load_labels_csv(path, label_col, **kwargs):
 
 y = load_labels_csv(path=os.path.join(data_dir, "musae_facebook_target.csv"), label_col="page_type")
 # a PyTorch tensor for the 22,470 Facebook pages containing the page_type label in the dataset.
-# print(y.shape)
 
 def load_edge_csv(path, src_index_col, dst_index_col, **kwargs):
     df = pd.read_csv(path, **kwargs)
@@ -69,33 +77,22 @@ def load_edge_csv(path, src_index_col, dst_index_col, **kwargs):
     src = df[src_index_col].values
     dst = df[dst_index_col].values
     
+    # Converting from a list to a tensor is slow,
+    # this converts to a np.array first.
     srcdist = np.array([src, dst])
     
     edge_index = torch.tensor(srcdist)
 
     return edge_index
 
-edge_index = load_edge_csv(path=os.path.join(data_dir, "musae_facebook_edges.csv"), src_index_col="id_1", dst_index_col="id_2")
-# edge_index is a tensor of length two, one for the source node and the other for the target node
-# print(edge_index.shape)
-
-# This whole block (of 3) is obsolete.
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
-data_train=Data(x=X_train, edge_index=edge_index, y=y_train)
-data_test=Data(x=X_test, edge_index=edge_index, y=y_test)
+edge_index = load_edge_csv(path=os.path.join(data_dir,
+            "musae_facebook_edges.csv"), src_index_col="id_1", dst_index_col="id_2")
 
 data = Data(x=x, edge_index=edge_index, y=y)
 
-
+sliced = int(np.round(data.num_nodes * trainPercent))
 train_empty=torch.zeros(data.num_nodes, dtype=torch.bool)
-train_empty[: data_train.num_nodes]=True
+train_empty[: sliced]=True
 
 test_empty=torch.ones(data.num_nodes, dtype=torch.bool)
-test_empty[: data_train.num_nodes]=False
-
-# test_empty=~train_empty
-
-# data_train, data_test = train_test_split(data, test_size = 0.2)
-
-
-# print(data_train)
+test_empty[: sliced]=False
