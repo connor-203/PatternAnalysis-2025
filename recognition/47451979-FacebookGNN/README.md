@@ -49,6 +49,11 @@ to
 
 divide images.
 
+
+| ![Another graph.](/recognition/47451979-FacebookGNN/assets/HammerTest.png) |
+|:--:|
+| *A nother caption* |
+
 ## Algorithm
 
 
