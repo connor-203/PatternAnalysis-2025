@@ -29,20 +29,25 @@
 |:--:|
 | *A caption* |
 
+Filler
 
 | ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/Hammer.png) |
 |:--:|
 | *A nother caption* |
 
+Text
 
 | ![Other graph.](/recognition/47451979-FacebookGNN/assets/True Labels.png) |
 |:--:|
 | *A nother caption* |
 
+to
 
 | ![Another graph.](/recognition/47451979-FacebookGNN/assets/Predicted Labels.png) |
 |:--:|
 | *A nother caption* |
+
+divide images.
 
 ## Algorithm
 
