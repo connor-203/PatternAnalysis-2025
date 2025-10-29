@@ -16,12 +16,11 @@ warnings.filterwarnings("ignore")
 
 # setting device on GPU if available, else CPU
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-# device = torch.device('cpu')
 print('Using device:', device)
 
 data_dir = "facebook_large"
 
-
+# Percentage of data used for training.
 trainPercent = 0.8
 
 def load_node_csv(path, index_col, **kwargs):
@@ -54,8 +53,8 @@ def load_node_csv(path, index_col, **kwargs):
 
     return x
 
+# Contains the PyTorch tensors containing feature vectors of the 22,470 Facebook pages.
 x = load_node_csv(path=os.path.join(data_dir, "musae_facebook_target.csv"), index_col="facebook_id")
-# x containing the PyTorch tensors containing feature vectors of the 22,470 Facebook pages.
 
 def load_labels_csv(path, label_col, **kwargs):
     df = pd.read_csv(path, **kwargs)
@@ -63,19 +62,14 @@ def load_labels_csv(path, label_col, **kwargs):
     # Convert class_labels to numeric data types in order to create tensors
     label_categories = df[label_col].astype("category").cat.categories
 
-    # class_label_to_code = pd.DataFrame({
-    #     "class_label": label_categories,
-    #     "class_label_code": pd.Categorical(label_categories, categories=label_categories).codes
-    # })
-
     df["class_label_code"] = pd.Categorical(df[label_col], categories=label_categories).codes
 
     y = torch.tensor(df["class_label_code"].values, dtype=torch.long).to(device)
 
     return y
 
+# PyTorch tensor for the 22,470 Facebook pages containing the page_type label in the dataset.
 y = load_labels_csv(path=os.path.join(data_dir, "musae_facebook_target.csv"), label_col="page_type")
-# a PyTorch tensor for the 22,470 Facebook pages containing the page_type label in the dataset.
 
 def load_edge_csv(path, src_index_col, dst_index_col, **kwargs):
     df = pd.read_csv(path, **kwargs)
@@ -97,6 +91,7 @@ edge_index = load_edge_csv(path=os.path.join(data_dir,
 data = Data(x=x, edge_index=edge_index, y=y)
 
 sliced = int(np.round(data.num_nodes * trainPercent))
+
 train_empty=torch.zeros(data.num_nodes, dtype=torch.bool).to(device)
 train_empty[: sliced]=True
 
