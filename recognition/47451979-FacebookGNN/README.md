@@ -25,7 +25,7 @@
 
 ## Data
 
-| ![UMAP embedding.](/recognition/47451979-FacebookGNN/assets/Training and Validation Losses for a GNN.png) |
+| ![UMAP embedding.](/recognition/47451979-FacebookGNN/assets/Losses.png) |
 |:--:|
 | *A caption* |
 
@@ -37,7 +37,7 @@ Filler
 
 Text
 
-| ![Other graph.](/recognition/47451979-FacebookGNN/assets/True Labels.png) |
+| ![Other graph.](/recognition/47451979-FacebookGNN/assets/TrueLabels.png) |
 |:--:|
 | *A nother caption* |
 
