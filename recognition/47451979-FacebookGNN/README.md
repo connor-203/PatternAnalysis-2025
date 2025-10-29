@@ -25,7 +25,7 @@
 
 ## Data
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/assets/hammer.png)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](recognition/47451979-FacebookGNN/assets/hammer.png)
 
 
 ## Algorithm
