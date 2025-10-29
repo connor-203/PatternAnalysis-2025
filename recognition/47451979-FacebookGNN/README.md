@@ -25,10 +25,12 @@
 
 ## Data
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/recognition/47451979-FacebookGNN/assets/Plot1.png)
-*A caption*
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/recognition/47451979-FacebookGNN/assets/Hammer.png)
-*A nother caption*
+| ![UMAP embedding.](/recognition/47451979-FacebookGNN/assets/Plot1.png) |
+|:--:|
+| *A caption* |
+| ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/Hammer.png) |
+|:--:|
+| *A nother caption* |
 
 ## Algorithm
 
