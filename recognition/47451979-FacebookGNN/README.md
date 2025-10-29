@@ -25,12 +25,20 @@
 
 ## Data
 
-
-| ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/Hammer.png) |
+| ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/NodeAll.png) |
 |:--:|
 | *A nother caption* |
 
 Text
+
+
+| ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/HammerAll.png) |
+|:--:|
+| *A nother caption* |
+
+Text
+
+
 
 
 ## Algorithm
