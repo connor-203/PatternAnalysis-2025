@@ -5,13 +5,20 @@
 ## Dependencies
 
 - Python
-- Pandas
+- Numpy
 - PyTorch
+- Matpltlib
+- Pandas
 - Torch_geometric
-- numpy
-- sklearn-image
 - umap
 - umap-learn
+- datashader
+- bokeh
+- holoviews
+- scikit-image
+- dask
+- 
+
 
 
 ## Project Structure
