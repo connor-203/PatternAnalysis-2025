@@ -4,7 +4,14 @@
 
 ## Dependencies
 
-
+- Python
+- Pandas
+- PyTorch
+- Torch_geometric
+- numpy
+- sklearn-image
+- umap
+- umap-learn
 
 
 ## Project Structure
