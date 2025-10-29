@@ -43,7 +43,7 @@ Text
 
 to
 
-| ![Another graph.](/recognition/47451979-FacebookGNN/assets/Predicted Labels.png) |
+| ![Another graph.](/recognition/47451979-FacebookGNN/assets/PredictedLabels.png) |
 |:--:|
 | *A nother caption* |
 
