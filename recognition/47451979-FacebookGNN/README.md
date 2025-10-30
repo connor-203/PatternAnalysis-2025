@@ -70,5 +70,5 @@ This run had an accuracy of 87%. Below is the hammer representation of the data:
 
 | ![Another graph.](/recognition/47451979-FacebookGNN/assets/HammerTest.png) |
 |:--:|
-| *Hammer representation of the data |
+| *Hammer representation of the data* |
 
