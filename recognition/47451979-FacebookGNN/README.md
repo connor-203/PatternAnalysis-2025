@@ -39,13 +39,15 @@ Disregarding the classes and adding the node connections gives the following plo
 |:--:|
 | *A nother caption* |
 
-Text
-
-
-
+The features of each page are then expressed in a json file.
 
 ## Algorithm
 
+The algorithm works by classifying each page based on its features and edges, a model that can do this with decent accuracy would have many uses such as if a new batch of pages that belong to a fifth category needed to be sorted into the four already existing categories. The basic architecture of the graph neural net was provided by Kaggle.
+
+The algorithm was enhanced from the Kaggle version by adding layers, increasing the number of epochs, and partitioning the test data into separate test and validation sets as the original code lacked a validation set. Furthermore, the Kaggle implementation was enhanced by moving the tensors to the GPU, thus allowing for more extensive testing to be done.
+
+The split for the train, test, and validation sets was 80%, 10%, and 10% respectively. This was deemed reasonable as there was a significant decrease in accuracy when the training set was less than 70% of the data.
 
 | ![UMAP embedding.](/recognition/47451979-FacebookGNN/assets/Losses.png) |
 |:--:|
