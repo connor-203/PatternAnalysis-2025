@@ -64,7 +64,7 @@ The following graph is the UMAP embedding with the predicted labels denoted by c
 
 | ![Another graph.](/recognition/47451979-FacebookGNN/assets/PredictedLabels.png) |
 |:--:|
-| *UMAP embedding with predicted lbales.* |
+| *UMAP embedding with predicted labels.* |
 
 As can be seen these two graphs are fairly similar indicating the model is fairly accurate. The accuracy of this test was 87%.
 
