@@ -66,6 +66,6 @@ The following graph is the UMAP embedding with the predicted labels denoted by c
 |:--:|
 | *UMAP embedding with predicted lbales.* |
 
-As can be seen these two graphs are fairly similar, the accuracy of this test was 87%.
+As can be seen these two graphs are fairly similar indicating the model is fairly accurate. The accuracy of this test was 87%.
 
 
