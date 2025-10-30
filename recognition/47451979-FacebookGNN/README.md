@@ -41,7 +41,7 @@ The features of each page are then expressed in a json file.
 
 ## Algorithm
 
-The algorithm works by classifying each page based on its features and edges, a model that can do this with decent accuracy would have many uses such as if a new batch of pages that belong to a fifth category needed to be sorted into the four already existing categories. The basic architecture of the graph neural net was provided by Kaggle, additionally the pre-processing was done with code from Kaggle.
+The algorithm works by classifying each page based on its features and edges. Graph neural networks are heavily based on convolutional neural networks, however less impacted by larger data. A good model for the facebook data would have many uses such as if a new batch of pages that belong to a fifth category needed to be sorted into the four already existing categories. The basic architecture of the graph neural net was provided by Kaggle, additionally the pre-processing was done with code from Kaggle.
 
 The algorithm was enhanced from the Kaggle version by adding layers, increasing the number of epochs, and partitioning the test data into separate test and validation sets as the original code lacked a validation set. Furthermore, the Kaggle implementation was enhanced by moving the tensors to the GPU, thus allowing for more extensive testing to be done, uninhibited by runtime.
 
@@ -66,9 +66,6 @@ The following graph is the UMAP embedding with the predicted labels denoted by c
 |:--:|
 | *UMAP embedding with predicted lbales.* |
 
-This run had an accuracy of 87%. Below is the hammer representation of the data:
+As can be seen these two graphs are fairly similar, the accuracy of this test was 87%.
 
-| ![Another graph.](/recognition/47451979-FacebookGNN/assets/HammerTest.png) |
-|:--:|
-| *Hammer representation of the data* |
 
