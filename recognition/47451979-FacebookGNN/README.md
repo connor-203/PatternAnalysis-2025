@@ -23,6 +23,11 @@
 
 ## Project Structure
 
+- 'dataset.py': Handles pre-processing of the data, uses code from Kaggle.
+- 'modules.py': Creates the graph neural network using basic GNN structure.
+- 'train.py': Trains and validates the GNN, also saves plot for training and validation losses.
+- 'predict.py': Predicts classes of test nodes, creates plots of true and predicted labels.
+
 ## Data
 
 | ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/NodeAll.png) |
