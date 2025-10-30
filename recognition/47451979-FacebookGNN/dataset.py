@@ -17,6 +17,7 @@ warnings.filterwarnings("ignore")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print('Using device:', device)
 
+# The data used was saved locally.
 data_dir = "facebook_large"
 
 # Portion of data used for training, validation and testing.
@@ -104,3 +105,4 @@ val_empty[sliced: sliced + valSlice] = True
 
 test_empty=torch.zeros(data.num_nodes, dtype=torch.bool).to(device)
 test_empty[sliced + valSlice: ]=True
+
