@@ -1,7 +1,5 @@
 # Testing Github Markdown.
 
-## Overview
-
 ## Dependencies
 
 - bokeh 3.8.0: Required for hammer-bundle plot (umap/umap.plot).
