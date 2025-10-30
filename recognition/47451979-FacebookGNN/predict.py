@@ -6,7 +6,7 @@ import umap
 import umap.plot
 
 
-# This little block of code is also based off code from medium.com. Any port in storm I suppose.
+# This little block of code is based off code from medium.com. Any port in storm I suppose.
 # Though it's based off the code from medium in the same way that the action of me driving around
 # the corner is from my driving instructor.
 model.eval()
@@ -74,4 +74,5 @@ plt.show()
 # umap.plot.show(plotted)
 
 print("Success")
+
 
