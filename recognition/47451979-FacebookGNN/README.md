@@ -3,8 +3,8 @@
 ## Dependencies
 
 - bokeh 3.8.0: Required for hammer-bundle plot (umap/umap.plot).
-- datashader 0.18.2: Required for hammer-bundle plot (umap/umap.plot).
 - dask 2025.10.0: Required for hammer-bundle plot (umap/umap.plot).
+- datashader 0.18.2: Required for hammer-bundle plot (umap/umap.plot).
 - holoviews 1.21.0: Required for hammer-bundle plot (umap/umap.plot).
 - matplotlib 3.9.2: Used for plotting.
 - numpy 2.1.2: Used for arrays.
