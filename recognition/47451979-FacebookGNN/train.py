@@ -51,4 +51,5 @@ plt.title("Training and Validation Losses")
 plt.xlabel("Epoch")
 plt.ylabel("Loss")
 plt.legend()
-plt.savefig("assets/Training and Validation Losses for a GNN.png")
+# plt.savefig("assets/Training and Validation Losses for a GNN.png")
+
