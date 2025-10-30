@@ -4,20 +4,20 @@
 
 ## Dependencies
 
-- Python
-- Numpy
-- PyTorch
-- Matpltlib
-- Pandas
-- Torch_geometric
-- umap
-- umap-learn
-- datashader
-- bokeh
-- holoviews
-- scikit-image
-- dask
-- 
+- bokeh 3.8.0: Required for hammer-bundle plot (umap/umap.plot).
+- datashader 0.18.2: Required for hammer-bundle plot (umap/umap.plot).
+- dask 2025.10.0: Required for hammer-bundle plot (umap/umap.plot).
+- holoviews 1.21.0: Required for hammer-bundle plot (umap/umap.plot).
+- matplotlib 3.9.2: Used for plotting.
+- numpy 2.1.2: Used for arrays.
+- Pandas 2.3.3: Used to read data.
+- Python 3.12.10: Programming language used for all code.
+- scikit-image 0.25.2: Required for hammer-bundle plot (umap/umap.plot)
+- Torch 2.5.0+cu118: Used for creating and training the model.
+- Torch-geometric 2.7.0: Used for creating graph neural network.
+- umap 0.1.1: Used for plotting.
+- umap-learn 0.5.9: Used for plotting.
+
 
 
 
