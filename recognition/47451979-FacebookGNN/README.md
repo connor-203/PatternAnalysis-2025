@@ -18,9 +18,6 @@
 - umap 0.1.1: Used for plotting.
 - umap-learn 0.5.9: Used for plotting.
 
-
-
-
 ## Project Structure
 
 - `dataset.py`: Handles pre-processing of the data, uses code from Kaggle.
@@ -30,12 +27,13 @@
 
 ## Data
 
+The data is a representation of Facebook pages with links between pages being represented by node edges. Creating a UMAP embedding of the data gives the following plot:
+
 | ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/NodeAll.png) |
 |:--:|
 | *A nother caption* |
 
-Text
-
+Disregarding the classes and adding the node connections gives the following plot:
 
 | ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/HammerAll.png) |
 |:--:|
@@ -58,7 +56,7 @@ Filler
 
 ## Results
 
-88.45% Accuracy thank you very much.
+88.4% Accuracy thank you very much.
 
 
 
