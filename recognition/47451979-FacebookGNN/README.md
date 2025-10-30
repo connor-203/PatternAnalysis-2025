@@ -31,52 +31,46 @@ The data is a representation of Facebook pages with links between pages being re
 
 | ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/NodeAll.png) |
 |:--:|
-| *A nother caption* |
+| *UMAP embedding with true labels denoted by colour.* |
 
-Disregarding the classes and adding the node connections gives the following plot:
+Disregarding the classes and using 15-nearest neighbours to connect the nodes gives:
 
 | ![Connectivity graph.](/recognition/47451979-FacebookGNN/assets/HammerAll.png) |
 |:--:|
-| *A nother caption* |
+| *This representation is used to emphasize the spread of the data.* |
 
 The features of each page are then expressed in a json file.
 
 ## Algorithm
 
-The algorithm works by classifying each page based on its features and edges, a model that can do this with decent accuracy would have many uses such as if a new batch of pages that belong to a fifth category needed to be sorted into the four already existing categories. The basic architecture of the graph neural net was provided by Kaggle.
+The algorithm works by classifying each page based on its features and edges, a model that can do this with decent accuracy would have many uses such as if a new batch of pages that belong to a fifth category needed to be sorted into the four already existing categories. The basic architecture of the graph neural net was provided by Kaggle, additionally the pre-processing was done with code from Kaggle.
 
-The algorithm was enhanced from the Kaggle version by adding layers, increasing the number of epochs, and partitioning the test data into separate test and validation sets as the original code lacked a validation set. Furthermore, the Kaggle implementation was enhanced by moving the tensors to the GPU, thus allowing for more extensive testing to be done.
+The algorithm was enhanced from the Kaggle version by adding layers, increasing the number of epochs, and partitioning the test data into separate test and validation sets as the original code lacked a validation set. Furthermore, the Kaggle implementation was enhanced by moving the tensors to the GPU, thus allowing for more extensive testing to be done, uninhibited by runtime.
 
-The split for the train, test, and validation sets was 80%, 10%, and 10% respectively. This was deemed reasonable as there was a significant decrease in accuracy when the training set was less than 70% of the data.
+The split for the train, test, and validation sets was 80%, 10%, and 10% respectively. This was deemed reasonable as there was a significant decrease in accuracy when the training set was less than 70% of the data. Plotting the training and validation losses gives the following plot:
 
 | ![UMAP embedding.](/recognition/47451979-FacebookGNN/assets/Losses.png) |
 |:--:|
-| *A caption* |
-
-Filler
+| *Training and validation losses across 2000 epochs.* |
 
 
 ## Results
 
-88.4% Accuracy thank you very much.
-
-
+This a UMAP embedding of the test data with true labels denoted by colour.
 
 | ![Other graph.](/recognition/47451979-FacebookGNN/assets/TrueLabels.png) |
 |:--:|
-| *A nother caption* |
+| *UMAP embedding with true labels.* |
 
-to
+The following graph is the UMAP embedding with the predicted labels denoted by colour.
 
 | ![Another graph.](/recognition/47451979-FacebookGNN/assets/PredictedLabels.png) |
 |:--:|
-| *A nother caption* |
+| *UMAP embedding with predicted lbales.* |
 
-divide images.
-
+This run had an accuracy of 87%. Below is the hammer representation of the data:
 
 | ![Another graph.](/recognition/47451979-FacebookGNN/assets/HammerTest.png) |
 |:--:|
-| *A nother caption* |
+| *Hammer representation of the data |
 
-Data was Facebook kaggle data, preprocessing was done using code from Kaggle. This test is a draft. **Remind me to move the tensors to the GPU**.
