@@ -13,15 +13,16 @@ import warnings
 # suppress all other warnings.
 warnings.filterwarnings("ignore")
 
-
 # setting device on GPU if available, else CPU
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print('Using device:', device)
 
 data_dir = "facebook_large"
 
-# Percentage of data used for training.
+# Portion of data used for training, validation and testing.
 trainPercent = 0.8
+validPercent = 0.1
+testPercent = 0.1
 
 def load_node_csv(path, index_col, **kwargs):
     df = pd.read_csv(path, **kwargs)
@@ -90,10 +91,16 @@ edge_index = load_edge_csv(path=os.path.join(data_dir,
 
 data = Data(x=x, edge_index=edge_index, y=y)
 
+# Calculate how many nodes in the training and validation sets,
 sliced = int(np.round(data.num_nodes * trainPercent))
+valSlice = int(np.round(data.num_nodes * validPercent))
 
+# Set up train, validation, and test masks.
 train_empty=torch.zeros(data.num_nodes, dtype=torch.bool).to(device)
 train_empty[: sliced]=True
 
-test_empty=torch.ones(data.num_nodes, dtype=torch.bool).to(device)
-test_empty[: sliced]=False
+val_empty=torch.zeros(data.num_nodes, dtype=torch.bool).to(device)
+val_empty[sliced: sliced + valSlice] = True
+
+test_empty=torch.zeros(data.num_nodes, dtype=torch.bool).to(device)
+test_empty[sliced + valSlice: ]=True
