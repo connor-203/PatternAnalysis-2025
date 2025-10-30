@@ -58,21 +58,22 @@ mapper = umap.UMAP().fit(xs.to('cpu'))
 
 # Plot true labels,
 plotted = umap.plot.points(mapper, labels=np.array(new_label))
-plt.savefig("assets/TrueLabels.png")
+plt.savefig("TrueLabels.png")
 
 # Plot predicted labels.
 plottedPred = umap.plot.points(mapper, labels=np.array(pred_label))
-plt.savefig("assets/PredictedLabels.png")
+plt.savefig("PredictedLabels.png")
 
 # connect = umap.plot.connectivity(mapper, show_points=True)
 
 # Hammer_bundle operation requires dask and scikit-image
 connect = umap.plot.connectivity(mapper, edge_bundling='hammer')
-plt.savefig("assets/HammerTest.png")
+plt.savefig("HammerTest.png")
 
 plt.show()
 # umap.plot.show(plotted)
 
 print("Success")
+
 
 
